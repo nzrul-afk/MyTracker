@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { FiBell, FiSettings, FiAlertCircle, FiCalendar, FiCheckCircle } from 'react-icons/fi';
+import { FiBell, FiSettings, FiAlertCircle, FiCalendar, FiCheckCircle, FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../lib/db';
 import { cn, getLocalISODate } from '../../lib/utils';
 
-export function Header() {
+export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
   const [showNotif, setShowNotif] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
 
@@ -117,8 +117,11 @@ export function Header() {
       {/* Mobile Header */}
       <header className="glass sticky top-0 z-30 flex items-center justify-between p-4 lg:hidden">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="MyTracker" className="w-7 h-7 object-contain drop-shadow-sm lg:hidden" />
-          <h1 className="text-xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight lg:hidden">MyTracker</h1>
+          <button onClick={onMenuClick} className="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+            <FiMenu size={20} />
+          </button>
+          <img src="/logo.png" alt="MyTracker" className="w-7 h-7 object-contain drop-shadow-sm" />
+          <h1 className="text-xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">MyTracker</h1>
         </div>
         
         <div className="flex items-center gap-2">
