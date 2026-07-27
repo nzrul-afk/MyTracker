@@ -18,7 +18,6 @@ export function Setting() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [alarmPattern, setAlarmPattern] = useState(localStorage.getItem('alarmPattern') || 'beep');
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [isInstallable, setIsInstallable] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -26,7 +25,6 @@ export function Setting() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      setIsInstallable(true);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -153,7 +151,6 @@ export function Setting() {
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
         setDeferredPrompt(null);
-        setIsInstallable(false);
       }
     } else {
       alert("Aplikasi mungkin sudah terinstall, atau browser Anda memblokir notifikasi otomatis.\n\nUntuk Menginstall Manual:\n1. Buka menu browser (Tanda Titik Tiga di pojok kanan atas)\n2. Pilih 'Add to Home Screen' (Tambahkan ke Layar Utama) atau 'Install App'");
