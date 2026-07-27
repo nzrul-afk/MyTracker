@@ -148,12 +148,15 @@ export function Setting() {
   };
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
-      setIsInstallable(false);
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setDeferredPrompt(null);
+        setIsInstallable(false);
+      }
+    } else {
+      alert("Aplikasi mungkin sudah terinstall, atau browser Anda memblokir notifikasi otomatis.\n\nUntuk Menginstall Manual:\n1. Buka menu browser (Tanda Titik Tiga di pojok kanan atas)\n2. Pilih 'Add to Home Screen' (Tambahkan ke Layar Utama) atau 'Install App'");
     }
   };
 
@@ -523,31 +526,29 @@ export function Setting() {
       </div>
 
       {/* Instalasi Aplikasi PWA */}
-        {isInstallable && (
-          <div className="glass-card p-6 flex flex-col gap-4 bg-gradient-to-br from-indigo-500 to-purple-600 text-white relative overflow-hidden mt-6 shadow-lg shadow-indigo-500/20">
-            <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl"></div>
-            
-            <div className="flex items-center gap-4 relative z-10">
-              <div className="p-3 bg-white/20 rounded-xl backdrop-blur-md">
-                <FiSmartphone size={28} />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-1">Install MyTracker PWA</h3>
-                <p className="text-sm text-indigo-50 opacity-90 leading-relaxed">
-                  Pasang aplikasi ini di layar utama (Home Screen) Anda agar bisa dibuka dengan cepat dan dapat berjalan meski tanpa koneksi internet (Offline).
-                </p>
-              </div>
-            </div>
-            
-            <button 
-              onClick={handleInstallClick}
-              className="mt-2 w-full py-3 bg-white text-indigo-600 hover:bg-slate-50 font-bold rounded-xl transition-colors shadow-sm relative z-10"
-            >
-              Pasang Aplikasi Sekarang
-            </button>
+      <div className="glass-card p-6 flex flex-col gap-4 bg-gradient-to-br from-indigo-500 to-purple-600 text-white relative overflow-hidden mt-6 shadow-lg shadow-indigo-500/20">
+        <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl"></div>
+        
+        <div className="flex items-center gap-4 relative z-10">
+          <div className="p-3 bg-white/20 rounded-xl backdrop-blur-md">
+            <FiSmartphone size={28} />
           </div>
-        )}
+          <div>
+            <h3 className="font-bold text-lg mb-1">Install MyTracker PWA</h3>
+            <p className="text-sm text-indigo-50 opacity-90 leading-relaxed">
+              Pasang aplikasi ini di layar utama (Home Screen) Anda agar bisa dibuka dengan cepat dan dapat berjalan meski tanpa koneksi internet (Offline).
+            </p>
+          </div>
+        </div>
+        
+        <button 
+          onClick={handleInstallClick}
+          className="mt-2 w-full py-3 bg-white text-indigo-600 hover:bg-slate-50 font-bold rounded-xl transition-colors shadow-sm relative z-10"
+        >
+          Pasang Aplikasi Sekarang
+        </button>
+      </div>
 
       {/* Data Backup Section */}
       <div className="flex flex-col gap-3">
