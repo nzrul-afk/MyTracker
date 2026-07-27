@@ -330,6 +330,14 @@ export function Setting() {
           { title: "Interview Magang Startup (Online)", type: "kegiatan", date: getRelDate(10), isRecurring: false, reminderEnabled: true, reminderType: "alarm", synced: false, updatedAt: now },
           { title: "Deadline Freelance Aplikasi Kasir", type: "pribadi", date: getRelDate(5), isRecurring: false, reminderEnabled: true, reminderType: "popup", synced: false, updatedAt: now },
         ]);
+
+        // --- HABITS (Pelacak Kebiasaan) ---
+        await db.habits.bulkAdd([
+          { title: "Ngoding 2 Jam Sehari", category: "Belajar", color: "indigo", records: [getRelDate(-1).split('T')[0], getRelDate(-2).split('T')[0], getRelDate(-3).split('T')[0]], synced: false, updatedAt: now },
+          { title: "Minum Air Putih 2L", category: "Kesehatan", color: "sky", records: [todayISO.split('T')[0], getRelDate(-1).split('T')[0], getRelDate(-3).split('T')[0], getRelDate(-4).split('T')[0]], synced: false, updatedAt: now },
+          { title: "Membaca Buku", category: "Pengembangan Diri", color: "emerald", records: [getRelDate(-2).split('T')[0], getRelDate(-5).split('T')[0]], synced: false, updatedAt: now },
+          { title: "Kurangi Scroll Sosmed", category: "Pribadi", color: "rose", records: [todayISO.split('T')[0], getRelDate(-1).split('T')[0]], synced: false, updatedAt: now },
+        ]);
       });
       alert('Berhasil masuk ke Mode Demo! Anda akan diarahkan ke Dashboard.');
       window.location.href = '/';
