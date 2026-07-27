@@ -592,7 +592,8 @@ export function Setting() {
         </h2>
         
         <div className="glass-card p-6 flex flex-col items-center text-center gap-4">
-          <div>
+          <div className="flex flex-col items-center">
+            <img src="/logo.png" alt="MyTracker Logo" className="w-16 h-16 object-contain mb-3 drop-shadow-md" />
             <h4 className="text-lg font-bold text-slate-900 dark:text-white">MyTracker v1.2.0</h4>
             <p className="text-sm font-medium text-slate-500 mt-1">Dibuat khusus untuk Anda mengatur segala aktivitas harian.</p>
           </div>

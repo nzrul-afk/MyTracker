@@ -38,7 +38,10 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         )}
       >
         <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
-          <h1 className="text-2xl font-bold text-primary-500 tracking-tight">MyTracker</h1>
+          <div className="flex items-center gap-2">
+            <img src="/logo.png" alt="MyTracker" className="w-8 h-8 object-contain drop-shadow-sm" />
+            <h1 className="text-2xl font-bold text-primary-500 tracking-tight">MyTracker</h1>
+          </div>
           <button onClick={onClose} className="p-2 lg:hidden text-slate-500 hover:text-slate-800 dark:hover:text-slate-200">
             <FiX size={24} />
           </button>
