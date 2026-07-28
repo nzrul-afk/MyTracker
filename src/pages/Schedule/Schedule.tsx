@@ -2,17 +2,18 @@ import { useState } from 'react';
 import { Jadwal } from './components/Jadwal';
 import { Kalender } from './components/Kalender';
 import { HabitTracker } from './components/HabitTracker';
-import { cn } from '../../lib/utils';
+import { SubNav, type SubNavTab } from '../../components/layout/SubNav';
+import { FiClock, FiTarget, FiCalendar } from 'react-icons/fi';
 
 type Tab = 'jadwal' | 'habit' | 'kalender';
 
 export function Schedule() {
   const [activeTab, setActiveTab] = useState<Tab>('jadwal');
 
-  const tabs: { id: Tab; label: string }[] = [
-    { id: 'jadwal', label: 'Jadwal Harian' },
-    { id: 'habit', label: 'Habits' },
-    { id: 'kalender', label: 'Kalender Agenda' }
+  const tabs: SubNavTab<Tab>[] = [
+    { id: 'jadwal', label: 'Jadwal Harian', icon: FiClock },
+    { id: 'habit', label: 'Habits', icon: FiTarget },
+    { id: 'kalender', label: 'Kalender Agenda', icon: FiCalendar },
   ];
 
   return (
@@ -29,25 +30,8 @@ export function Schedule() {
         {activeTab === 'kalender' && <Kalender />}
       </div>
 
-      {/* Sub Navigation (Sticky Bottom Navbar) */}
-      <div className="sticky bottom-0 z-20 mt-auto pt-4 pb-2 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent dark:from-slate-950 dark:via-slate-950/90 flex justify-center -mx-4 px-4 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8 pointer-events-none">
-        <div className="pointer-events-auto flex gap-1.5 p-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] w-full max-w-lg overflow-x-auto no-scrollbar">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                "flex-1 px-2 py-3 text-xs sm:text-sm font-semibold rounded-xl whitespace-nowrap transition-all duration-300 active:scale-95",
-                activeTab === tab.id 
-                  ? "bg-indigo-500 text-white shadow-md shadow-indigo-500/25"
-                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-              )}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* Sub Navigation */}
+      <SubNav tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
   );
 }
