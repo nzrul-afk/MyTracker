@@ -6,6 +6,15 @@ Dibangun dengan **React**, **Vite**, **TypeScript**, dan **TailwindCSS**, aplika
 
 ---
 
+## 🌐 Live Demo / Cara Pakai
+Anda dapat langsung mencoba dan menggunakan aplikasi ini tanpa perlu mengunduh atau menginstal apa pun. Cukup kunjungi tautan berikut:
+
+👉 **[https://my-tracker-woad-chi.vercel.app](https://my-tracker-woad-chi.vercel.app)**
+
+*(Saran: Buka tautan di atas melalui browser HP Anda, lalu pilih opsi "Tambahkan ke Layar Utama" atau "Add to Home Screen" untuk menginstalnya sebagai aplikasi PWA).*
+
+---
+
 ## ✨ Fitur Utama
 - 💰 **Finance Tracker:** Pencatatan pemasukan, pengeluaran, anggaran bulanan, tagihan rutin, hingga *wishlist* barang impian lengkap dengan grafik visual (*Recharts*).
 - 📅 **Schedule & Habit:** Kalender interaktif, manajemen rutinitas harian, dan pelacak kebiasaan (*Habit Tracker*).
@@ -38,41 +47,6 @@ Dibangun dengan **React**, **Vite**, **TypeScript**, dan **TailwindCSS**, aplika
    Jika Anda melakukan *Clear Cache* / *Clear Site Data* pada peramban (Chrome/Safari) dengan sengaja, maka **seluruh data Anda akan hilang**. Selalu lakukan *Export/Backup Data* secara berkala melalui menu Pengaturan.
 3. **Ketergantungan Browser Lama 🌐**  
    Fitur *Service Worker* dan dukungan PWA terbaik (terutama instalasi) memerlukan *browser* versi modern (Chrome/Edge terbaru). Di *browser* yang sangat usang, aplikasi mungkin hanya berjalan sebagai web standar.
-
----
-
-## 📥 Cara Instalasi / Download
-
-Anda dapat mengunduh dan menjalankan aplikasi ini secara lokal di komputer Anda dengan mengikuti langkah-langkah berikut:
-
-### Opsi 1: Download ZIP
-1. Klik tombol hijau **Code** di bagian atas halaman repositori ini.
-2. Pilih **Download ZIP** (atau klik [tautan langsung ini](https://github.com/nzrul-afk/MyTracker/archive/refs/heads/main.zip)).
-3. Ekstrak file ZIP yang sudah diunduh ke folder komputer Anda.
-
-### Opsi 2: Clone via Git
-Buka terminal atau command prompt dan jalankan perintah berikut:
-```bash
-git clone https://github.com/nzrul-afk/MyTracker.git
-```
-
-### 🚀 Cara Menjalankan Aplikasi
-
-Setelah berhasil mengunduh (melalui ZIP atau Git Clone), ikuti langkah ini untuk menjalankannya:
-
-1. Buka terminal dan masuk ke direktori folder proyek:
-   ```bash
-   cd MyTracker
-   ```
-2. Instal semua dependensi yang dibutuhkan:
-   ```bash
-   npm install
-   ```
-3. Jalankan server pengembangan (Development Server):
-   ```bash
-   npm run dev
-   ```
-4. Buka tautan lokal yang muncul di terminal (biasanya `http://localhost:5173`) di browser Anda.
 
 ---
 
